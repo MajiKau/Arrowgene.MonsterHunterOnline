@@ -16,6 +16,7 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 需要同步的Actor的EntityId
+        /// Entity Id of Actor that needs to be synchronized
         /// </summary>
         public uint EntityId { get; set; }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Arrowgene.MonsterHunterOnline.Service.CsProto;
 using Arrowgene.MonsterHunterOnline.Service.CsProto.Structures;
+using Arrowgene.MonsterHunterOnline.Service.TqqApi;
 
 namespace Arrowgene.MonsterHunterOnline.Service.System.ChatSystem.Command.Commands
 {
@@ -56,7 +57,6 @@ namespace Arrowgene.MonsterHunterOnline.Service.System.ChatSystem.Command.Comman
             ));
             string msg = $"Teleported to :\nX:{posX}\nY:{posY}\nZ:{posZ}";
             ChatMessage response = ChatMessage.CommandMessage(client, msg);
-
             responses.Add(response);
         }
     }

@@ -72,21 +72,25 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 飞行道具id
+        /// Projectile id
         /// </summary>
         public int NetID;
 
         /// <summary>
         /// 释放飞行道具者id
+        /// ID of the user who released the projectile
         /// </summary>
         public int LauncherID;
 
         /// <summary>
         /// 用于发射的载具id
+        /// Id of the vehicle used for the launch
         /// </summary>
         public uint VehicleID;
 
         /// <summary>
         /// 飞行道具类型id
+        /// Projectile type ID
         /// </summary>
         public int TypeID;
 
@@ -112,6 +116,7 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 生成时使用的道具Id（如果有）
+        /// The prop ID used during generation (if any)
         /// </summary>
         public int itemId;
 
@@ -147,6 +152,7 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 判定半径大小
+        /// Determine the radius size
         /// </summary>
         public float radius;
 
@@ -162,11 +168,13 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 发射方式（用于验证和同步，详见ProjLaunchParams.h）
+        /// Launch method (For verification and synchronization, see ProjLaunchParams.h for details)
         /// </summary>
         public int launchType;
 
         /// <summary>
         /// bool变量，是否用XYZ轴的额外加速度
+        /// bool variable, whether to use the extra acceleration of the XYZ axis
         /// </summary>
         public int additiveAccXYZMode;
 

@@ -80,6 +80,11 @@ public class AssetRepository
     {
         foreach (ItemInfo item in items)
         {
+            if(item.ItemId > 7000 && item.ItemId < 7010) {
+                Logger.Debug($"ItemId:{item.ItemId} Name:{item.Name}");
+            }
+
+
             if (_items.TryGetValue(item.ItemId, out ItemInfo existing))
             {
                 Logger.Info(

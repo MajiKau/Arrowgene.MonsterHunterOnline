@@ -149,6 +149,8 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Core
 
         public static CsCsProtoStructurePacket<ItemMgrSwapItemNtf> ItemMgrSwapItemNtf =>
             new(CS_CMD_ID.CS_CMD_ITEMMGR_SWAP_ITEM_NTF);
+        public static CsCsProtoStructurePacket<CSItemMgrUseItemReq> CSItemMgrUseItemReq =>
+            new(CS_CMD_ID.CS_CMD_ITEMMGR_USE_ITEM_REQ);
 
         public static CsCsProtoStructurePacket<MainInstanceAgreeOptRsp> MainInstanceAgreeOptRsp =>
             new(CS_CMD_ID.CS_CMD_MAIN_INSTANCE_AGREE_OPT_RSP);
@@ -170,5 +172,45 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Core
 
         public static CsCsProtoStructurePacket<MainInstanceClose> MainInstanceClose =>
             new(CS_CMD_ID.CS_CMD_MAIN_INSTANCE_CLOSE);
+
+        public static CsCsProtoStructurePacket<CSSkillEffectInfo> CSSkillEffectInfo =>
+            new(CS_CMD_ID.CS_CMD_SKILL_EFFECT_SYNC);
+
+        public static CsCsProtoStructurePacket<CSHealthSyncNtf> CSHealthSyncNtf =>
+            new(CS_CMD_ID.CS_CMD_HEALTH_SYNC);
+
+        public static CsCsProtoStructurePacket<C2SSpeakExec> C2SSpeakExec =>
+            new(CS_CMD_ID.C2S_CMD_SPEAK_EXEC);
+
+        public static CsCsProtoStructurePacket<S2CSpeakExec> S2CSpeakExec =>
+            new(CS_CMD_ID.S2C_CMD_SPEAK_EXEC);
+
+        public static CsCsProtoStructurePacket<CSManufactureProduceRsp> CSManufactureProduceRsp =>
+            new(CS_CMD_ID.CS_CMD_MANUFACTURE_PRODUCE_RSP);
+
+        public static CsCsProtoStructurePacket<CSChangeAmmoRsp> CSChangeAmmoRsp =>
+            new(CS_CMD_ID.CS_CMD_CHANGE_AMMO_RSP);
+
+        public static CsCsProtoStructurePacket<CSChangeAmmoReq> CSChangeAmmoReq =>
+            new(CS_CMD_ID.CS_CMD_CHANGE_AMMO_REQ);
+
+        public static CsCsProtoStructurePacket<CSPlayerAmmoChangeReq> CSPlayerAmmoChangeReq =>
+            new(CS_CMD_ID.CS_CMD_PLAYER_AMMO_CHANGE_REQ);
+
+        public static CsCsProtoStructurePacket<CSPlayerAmmoChangeRsp> CSPlayerAmmoChangeRsp =>
+            new(CS_CMD_ID.CS_CMD_PLAYER_AMMO_CHANGE_RSP);
+
+        public static CsCsProtoStructurePacket<CSReloadAmmoReq> CSReloadAmmoReq =>
+            new(CS_CMD_ID.CS_CMD_RELOAD_AMMO_REQ);
+
+        public static CsCsProtoStructurePacket<CSReloadAmmoRsp> CSReloadAmmoRsp =>
+            new(CS_CMD_ID.CS_CMD_RELOAD_AMMO_RSP);
+
+        public static CsCsProtoStructurePacket<CSProjectileLaunchNtfList> CSProjectileLaunchNtfList =>
+            new(CS_CMD_ID.CS_CMD_PROJECTILE_LAUNCH_NTF_LIST);
+
+        public static CsCsProtoStructurePacket<CSProjectileLaunchNtf> CSProjectileLaunchNtf =>
+            new(CS_CMD_ID.CS_CMD_PROJECTILE_LAUNCH_NTF);
+
     }
 }

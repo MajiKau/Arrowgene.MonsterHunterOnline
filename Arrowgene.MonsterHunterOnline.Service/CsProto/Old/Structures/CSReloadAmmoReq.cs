@@ -46,6 +46,7 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 弹药类型id
+        /// Ammunition type id
         /// </summary>
         public int TypeID;
 

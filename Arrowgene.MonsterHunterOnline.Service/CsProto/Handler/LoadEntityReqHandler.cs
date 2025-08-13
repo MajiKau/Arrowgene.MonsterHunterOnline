@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Arrowgene.Buffers;
 using Arrowgene.Logging;
 using Arrowgene.MonsterHunterOnline.Service.CsProto.Core;
 using Arrowgene.MonsterHunterOnline.Service.CsProto.Enums;
@@ -6,6 +7,31 @@ using Arrowgene.MonsterHunterOnline.Service.CsProto.Structures;
 using Arrowgene.MonsterHunterOnline.Service.System;
 
 namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Handler;
+
+
+
+public class CSBBInt : CSBBVariable
+{
+    private static readonly ILogger Logger = LogProvider.Logger(typeof(CSBBInt));
+    public CSBBInt()
+    {
+        value = 100;
+    }
+
+    public CS_BBVALUE_TYPE Type => CS_BBVALUE_TYPE.CS_BBVALUE_TYPE_INT;
+
+    public int value;
+
+    public void WriteCs(IBuffer buffer)
+    {
+        buffer.WriteInt32(value, Endianness.Big);
+    }
+
+    public void ReadCs(IBuffer buffer)
+    {
+        value = buffer.ReadInt32(Endianness.Big);
+    }
+}
 
 public class LoadEntityReqHandler : CsProtoStructureHandler<LoadEntityReq>
 {
@@ -60,24 +86,33 @@ public class LoadEntityReqHandler : CsProtoStructureHandler<LoadEntityReq>
         client.SendCsProtoStructurePacket(sceneObjAppearNtfList);
 
 
+        //CsCsProtoStructurePacket<MonsterAppearNtf> monsterAppearNtf = CsProtoResponse.MonsterAppearNtf;
+        //monsterAppearNtf.Structure.NetId = (int)client.Character.Id;
+        //monsterAppearNtf.Structure.SpawnType = (short)2;
+        //monsterAppearNtf.Structure.MonsterInfoId = 50080;
+        //monsterAppearNtf.Structure.Name = "M008_RaptorCrimson";
+        //monsterAppearNtf.Structure.Class = "EmCommon";
+        //monsterAppearNtf.Structure.EntGuid = 12345;
+        //monsterAppearNtf.Structure.Pose.t = client.State.Position;
+
+        //monsterAppearNtf.Structure.LcmState.MonsterID = 50080;
+        //monsterAppearNtf.Structure.LcmState.MonsterPos = client.State.Position;
+        //monsterAppearNtf.Structure.LcmState.TargetSrvID = 1;
+        //monsterAppearNtf.Structure.LcmState.SyncTime = 0;
+
+        //monsterAppearNtf.Structure.Dead = 0;
+
+        //CSBBInt healthValue = new CSBBInt() { value = 200 };
+        //CSBBVar healthVar = new CSBBVar(healthValue) { Name = "MaxHealth" };
+        //monsterAppearNtf.Structure.BBVars.Vars.Add(healthVar);
+
+        ////   Logger.Debug(monsterAppearNtf.Structure.JsonDump());
+        //CsCsProtoStructurePacket<MonsterAppearNtfList> monsterAppearNtfList = CsProtoResponse.MonsterAppearNtfList;
+        //monsterAppearNtfList.Structure.Appear.Add(monsterAppearNtf.Structure);
+        //client.SendCsProtoStructurePacket(monsterAppearNtfList);
+
         return;
-        CsCsProtoStructurePacket<MonsterAppearNtf> monsterAppearNtf = CsProtoResponse.MonsterAppearNtf;
-        monsterAppearNtf.Structure.NetId = (int)50080;
-        monsterAppearNtf.Structure.SpawnType = (short)2;
-        monsterAppearNtf.Structure.MonsterInfoId = 50080;
-        monsterAppearNtf.Structure.Name = "M008_RaptorCrimson";
-        monsterAppearNtf.Structure.Class = "EmCommon";
-        monsterAppearNtf.Structure.EntGuid = 12345;
-        monsterAppearNtf.Structure.Pose.t = client.State.Position;
 
-        monsterAppearNtf.Structure.LcmState.MonsterID = 50080;
-        monsterAppearNtf.Structure.LcmState.MonsterPos = client.State.Position;
-        monsterAppearNtf.Structure.LcmState.TargetSrvID = 1;
-        monsterAppearNtf.Structure.LcmState.SyncTime = 0;
 
-        //   Logger.Debug(monsterAppearNtf.Structure.JsonDump());
-        CsCsProtoStructurePacket<MonsterAppearNtfList> monsterAppearNtfList = CsProtoResponse.MonsterAppearNtfList;
-        monsterAppearNtfList.Structure.Appear.Add(monsterAppearNtf.Structure);
-        client.SendCsProtoStructurePacket(monsterAppearNtfList);
     }
 }

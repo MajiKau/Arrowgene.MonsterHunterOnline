@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using Arrowgene.Logging;
 using Arrowgene.MonsterHunterOnline.Service.CsProto.Core;
 using Arrowgene.MonsterHunterOnline.Service.CsProto.Handler;
@@ -31,6 +32,8 @@ namespace Arrowgene.MonsterHunterOnline.Service
 
         public Server(Setting setting)
         {
+            CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("en-GB");
+
             Setting = new Setting(setting);
 
             Assets = new AssetRepository();
@@ -115,6 +118,9 @@ namespace Arrowgene.MonsterHunterOnline.Service
             _csProtoPacketHandler.AddHandler(new CsCmdSystemTransAntiDataHandler());
             _csProtoPacketHandler.AddHandler(new CsCmdTeamInfoGetReqHandler());
             _csProtoPacketHandler.AddHandler(new CsCmdVipServiceExpireReqHandler());
+            _csProtoPacketHandler.AddHandler(new CsItemMgrUseItemReqHandler());
+            _csProtoPacketHandler.AddHandler(new CsSkillEffectSyncHandler());
+            _csProtoPacketHandler.AddHandler(new CsSpeakExecHandler());
 
             // new handler
             _csProtoPacketHandler.AddHandler(new BattleActorBeginMoveHandler());
@@ -150,6 +156,12 @@ namespace Arrowgene.MonsterHunterOnline.Service
             _csProtoPacketHandler.AddHandler(new TeamPushVecNtfHandler());
             _csProtoPacketHandler.AddHandler(new UpdateRushStateHandler());
             _csProtoPacketHandler.AddHandler(new WorldAccountReqHandler());
+
+            _csProtoPacketHandler.AddHandler(new ManufactureProduceReqHandler(ItemManager));
+            _csProtoPacketHandler.AddHandler(new ReloadAmmoReqHandler());
+            _csProtoPacketHandler.AddHandler(new ChangeAmmoReqHandler());
+            _csProtoPacketHandler.AddHandler(new PlayerAmmoChangeReqHandler());
+            _csProtoPacketHandler.AddHandler(new PlayerExtRequestHandler());
 
 
             _tpduConsumer.AddHandler(new TdpuCmdRelay(Database));

@@ -20,6 +20,7 @@ public enum GameMode
     Bouns = 16, // TODO is this 'Bonus' ?
     PvP = 17,
     Tutorial = 23,
+    //Fever = 24,
     Elite = 26,
     ExtremeB = 33,
     SingleElite = 34,

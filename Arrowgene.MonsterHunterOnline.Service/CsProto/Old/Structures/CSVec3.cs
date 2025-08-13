@@ -42,6 +42,13 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
             z = 0.0f;
         }
 
+        public CSVec3(float x, float y, float z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
         public CS_PROP_SYNC_TYPE Type => CS_PROP_SYNC_TYPE.CS_PROP_SYNC_VEC3;
 
         public float x;

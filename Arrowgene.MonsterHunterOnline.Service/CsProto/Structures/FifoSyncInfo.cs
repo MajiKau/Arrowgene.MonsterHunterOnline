@@ -5,6 +5,7 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 {
     /// <summary>
     /// FIFO同步信息
+    /// FIFO synchronization information
     /// </summary>
     public class FifoSyncInfo : Structure, ICsStructure
     {
@@ -31,8 +32,30 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
             Sta = 0;
         }
 
+        public string Print()
+        {
+            string msg = "";
+            msg += $"SyncTime:{SyncTime} ";
+            msg += $"Type:{Type} ";
+            msg += $"Extension:{Extension} ";
+            msg += $"State1:{State1} ";
+            msg += $"State2:{State2} ";
+            msg += $"State3:{State3} ";
+            msg += $"State4:{State4} ";
+            msg += $"AgState:{AgState} ";
+            msg += $"SkillId:{SkillId} ";
+            msg += $"SkillLevel:{SkillLevel} ";
+            msg += $"Param:{Param} ";
+            msg += $"ParamF:{ParamF} ";
+            msg += $"AttackRotation:{AttackRotation} ";
+            msg += $"Sp:{Sp} ";
+            msg += $"Sta:{Sta} ";
+            return msg;
+        }
+
         /// <summary>
         /// 同步时间
+        /// Synchronous time
         /// </summary>
         public long SyncTime { get; set; }
 
@@ -44,16 +67,19 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 当前方向
+        /// Current direction
         /// </summary>
         public CSQuat Rot { get; set; }
 
         /// <summary>
         /// 方向1
+        /// Direction 1
         /// </summary>
         public CSQuat Rot1 { get; set; }
 
         /// <summary>
         /// 方向2
+        /// Direction 2
         /// </summary>
         public CSQuat Rot2 { get; set; }
 
@@ -65,56 +91,67 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 额外信息
+        /// Additional Information
         /// </summary>
         public byte Extension { get; set; }
 
         /// <summary>
         /// 玩家Stance或者FSM状态
+        /// Stance or FSM status of the player
         /// </summary>
         public uint State1 { get; set; }
 
         /// <summary>
         /// 玩家Stance或者FSM状态
+        /// Stance or FSM status of the player
         /// </summary>
         public uint State2 { get; set; }
 
         /// <summary>
         /// 玩家Stance或者FSM状态
+        /// Stance or FSM status of the player
         /// </summary>
         public uint State3 { get; set; }
 
         /// <summary>
         /// 玩家Stance或者FSM状态
+        /// Stance or FSM status of the player
         /// </summary>
         public uint State4 { get; set; }
 
         /// <summary>
         /// 玩家AG状态
+        /// Player AG status
         /// </summary>
         public uint AgState { get; set; }
 
         /// <summary>
         /// 玩家SkillID
+        /// Player Skill ID
         /// </summary>
         public uint SkillId { get; set; }
 
         /// <summary>
         /// 玩家SkillLevel
+        /// Player Skill Level
         /// </summary>
         public uint SkillLevel { get; set; }
 
         /// <summary>
         /// 参数信息
+        /// Parameter information
         /// </summary>
         public int Param { get; set; }
 
         /// <summary>
         /// 浮点参数信息
+        /// Floating point parameter information
         /// </summary>
         public float ParamF { get; set; }
 
         /// <summary>
         /// 攻击转向
+        /// Attack turn
         /// </summary>
         public float AttackRotation { get; set; }
 

@@ -46,6 +46,7 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 装载者id
+        /// Loader id
         /// </summary>
         public int NetID;
 

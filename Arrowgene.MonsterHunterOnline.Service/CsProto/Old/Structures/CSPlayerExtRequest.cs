@@ -38,6 +38,11 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
     {
         private static readonly ILogger Logger = LogProvider.Logger(typeof(CSPlayerExtRequest));
 
+        public CSPlayerExtRequest()
+        {
+            Request = new CSInteractRequest(null);
+        }
+
         public CSPlayerExtRequest(CSPlayerExtRequestData _Request)
         {
             Request = _Request;

@@ -46,11 +46,13 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
 
         /// <summary>
         /// 激活子弹的道具ID
+        /// The prop ID of the bullet activates
         /// </summary>
         public int NextAmmoID;
 
         /// <summary>
         /// 副子弹的道具ID
+        /// The prop ID of the secondary bullet
         /// </summary>
         public int SubAmmoID;
 
