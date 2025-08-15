@@ -37,7 +37,7 @@ public class BattleActorFifoSyncHandler : CsProtoStructureHandler<FifoSyncInfo>
         fifoSyncInfoNtf.Structure.SyncInfo = req;
         //client.SendCsProtoStructurePacket(fifoSyncInfoNtf);
 
-        Logger.Debug(req.Print());
+        //Logger.Debug(req.Print());
 
         if (req.State2 == 2)
         {

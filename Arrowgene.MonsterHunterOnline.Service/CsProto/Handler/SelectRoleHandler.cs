@@ -48,6 +48,7 @@ public class SelectRoleHandler : CsProtoStructureHandler<SelectRoleReq>
         client.SendCsProtoStructurePacket(townSessionStart);
 
         CsCsProtoStructurePacket<PlayerInitInfo> playerInitInfo = CsProtoResponse.PlayerInitInfo;
+        playerInitInfo.Structure.Pose = client.State.InitSpawnPose;
         _characterManager.PopulatePlayerInitInfo(client, client.Character, playerInitInfo.Structure);
         client.SendCsProtoStructurePacket(playerInitInfo);
 

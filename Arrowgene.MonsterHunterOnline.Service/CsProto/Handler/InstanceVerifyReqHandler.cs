@@ -6,6 +6,9 @@ using Arrowgene.MonsterHunterOnline.Service.Database;
 using Arrowgene.MonsterHunterOnline.Service.System;
 using Arrowgene.MonsterHunterOnline.Service.System.CharacterSystem;
 using Arrowgene.MonsterHunterOnline.Service.System.ItemSystem;
+using Microsoft.VisualBasic.FileIO;
+using System.Globalization;
+using System.IO;
 
 namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Handler;
 
@@ -60,7 +63,71 @@ public class InstanceVerifyReqHandler : CsProtoStructureHandler<InstanceVerifyRe
         CsCsProtoStructurePacket<PlayerInitInfo> playerInitInfo = CsProtoResponse.PlayerInitInfo;
         playerInitInfo.Structure.Pose.t.x = 1681.2958f;
         playerInitInfo.Structure.Pose.t.y = 346.80392f;
-        playerInitInfo.Structure.Pose.t.z = 205.375f;
+        playerInitInfo.Structure.Pose.t.z = 4050.375f;
+
+        string staticFolder = Path.Combine(Util.ExecutingDirectory(), "Files\\Static");
+        string csvSpawnPointsPath = Path.Combine(staticFolder, "SpawnPoints.csv");
+        //int level = client.State.levelId;
+        int level = req.ServiceId;
+        using (TextFieldParser parser = new TextFieldParser(csvSpawnPointsPath))
+        {
+            string level_comp = level.ToString();
+            parser.TextFieldType = FieldType.Delimited;
+            parser.SetDelimiters(",");
+
+            // Skip the header line
+            parser.ReadLine();
+            while (!parser.EndOfData)
+            {
+                string[] fields = parser.ReadFields();
+                string levelId = fields[0];
+                bool isMatch = (level_comp.Contains(levelId) || levelId.Contains(level_comp));
+                if (isMatch)
+                {
+                    string filename = fields[1];
+                    string areaName = fields[2];
+                    string pos = fields[3];
+                    string rotate = fields[4];
+
+                    //Logger.Info($"warp point match found: ({levelId})({filename})({areaName})({name})");
+                    // Process the position (Pos) and rotation (Rotate) values
+                    string[] posValues = pos.Split(',');
+                    string[] rotateValues = rotate.Split(',');
+
+                    float posX = float.Parse(posValues[0], CultureInfo.InvariantCulture);
+                    float posY = float.Parse(posValues[1], CultureInfo.InvariantCulture);
+                    float posZ = float.Parse(posValues[2], CultureInfo.InvariantCulture);
+
+                    float rotateX = float.Parse(rotateValues[0], CultureInfo.InvariantCulture);
+                    float rotateY = float.Parse(rotateValues[1], CultureInfo.InvariantCulture);
+                    float rotateZ = float.Parse(rotateValues[2], CultureInfo.InvariantCulture);
+                    float rotateW = float.Parse(rotateValues[3], CultureInfo.InvariantCulture);
+
+                    playerInitInfo.Structure.Pose.t.x = posX;
+                    playerInitInfo.Structure.Pose.t.y = posY;
+                    playerInitInfo.Structure.Pose.t.z = posZ;
+                    playerInitInfo.Structure.Pose.q.v.x = rotateX;
+                    playerInitInfo.Structure.Pose.q.v.y = rotateY;
+                    playerInitInfo.Structure.Pose.q.v.z = rotateZ;
+                    playerInitInfo.Structure.Pose.q.w = rotateW;
+
+
+                    //playerInitInfo.Structure.Pose = new CSQuatT()
+                    //{
+                    //    q = new CSQuat()
+                    //    {
+                    //        v = new CSVec3() { x = rotateX, y = rotateY, z = rotateZ },
+                    //        w = rotateW
+                    //    },
+                    //    t = new CSVec3() { x = (float)posX, y = (float)posY, z = (float)posZ }
+                    //};
+
+                    Logger.Debug($"Warp point found at {posX} {posY} {posZ} for level {level}");
+                    break;
+                }
+            }
+        }
+
         _characterManager.PopulatePlayerInitInfo(client, client.Character, playerInitInfo.Structure);
         client.SendCsProtoStructurePacket(playerInitInfo);
 
@@ -68,15 +135,13 @@ public class InstanceVerifyReqHandler : CsProtoStructureHandler<InstanceVerifyRe
         client.SendCsProtoStructurePacket(instanceVerifyRsp);
 
         // TODO 
-        // CsCsProtoStructurePacket<PlayerTeleport> PlayerTeleport = CsProtoResponse.PlayerTeleport;
-        // PlayerTeleport.Structure.SyncTime = 1;
-        // PlayerTeleport.Structure.NetObjId = client.Character.Id;
-        // PlayerTeleport.Structure.Region = client.State.MainInstanceLevelId;
-        // PlayerTeleport.Structure.TargetPos.t.x = 1681.2958f;
-        // PlayerTeleport.Structure.TargetPos.t.y = 346.80392f;
-        // PlayerTeleport.Structure.TargetPos.t.z = 205.375f;
-        // PlayerTeleport.Structure.ParentGuid = 1;
-        // PlayerTeleport.Structure.InitState = 1;
-        // client.SendCsProtoStructurePacket(PlayerTeleport);
+        //CsCsProtoStructurePacket<PlayerTeleport> PlayerTeleport = CsProtoResponse.PlayerTeleport;
+        //PlayerTeleport.Structure.SyncTime = 1;
+        //PlayerTeleport.Structure.NetObjId = client.Character.Id;
+        //PlayerTeleport.Structure.Region = client.State.MainInstanceLevelId;
+        //PlayerTeleport.Structure.TargetPos = playerInitInfo.Structure.Pose;
+        //PlayerTeleport.Structure.ParentGuid = 1;
+        //PlayerTeleport.Structure.InitState = 1;
+        //client.SendCsProtoStructurePacket(PlayerTeleport);
     }
 }
