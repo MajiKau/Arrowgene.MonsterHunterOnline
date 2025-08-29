@@ -1533,6 +1533,7 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Enums
 
         /// <summary>
         /// 伤害信息返回客户端
+        /// The damage information is returned to the client
         /// </summary>
         CS_CMD_BATTLE_DMGRESULT = 723,
 

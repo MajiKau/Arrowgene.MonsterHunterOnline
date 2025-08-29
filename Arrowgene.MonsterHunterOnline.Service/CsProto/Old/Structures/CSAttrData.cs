@@ -35,6 +35,12 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
     {
         private static readonly ILogger Logger = LogProvider.Logger(typeof(CSAttrData));
 
+        public CSAttrData(uint id, CSAttrDataUnion _Value)
+        {
+            AttrID = 0;
+            Value = _Value;
+        }
+
         public CSAttrData(CSAttrDataUnion _Value)
         {
             AttrID = 0;

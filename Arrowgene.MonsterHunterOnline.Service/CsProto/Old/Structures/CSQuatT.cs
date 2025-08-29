@@ -35,6 +35,13 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
     {
         private static readonly ILogger Logger = LogProvider.Logger(typeof(CSQuatT));
 
+
+        public CSQuatT(float x, float y, float z, float qw, float qx, float qy, float qz)
+        {
+            q = new CSQuat(qw, qx, qy, qz);
+            t = new CSVec3(x,y,z);
+        }
+
         public CSQuatT()
         {
             q = new CSQuat();

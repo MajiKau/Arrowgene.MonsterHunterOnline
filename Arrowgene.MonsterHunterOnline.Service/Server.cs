@@ -162,6 +162,8 @@ namespace Arrowgene.MonsterHunterOnline.Service
             _csProtoPacketHandler.AddHandler(new ChangeAmmoReqHandler());
             _csProtoPacketHandler.AddHandler(new PlayerAmmoChangeReqHandler());
             _csProtoPacketHandler.AddHandler(new PlayerExtRequestHandler());
+            _csProtoPacketHandler.AddHandler(new CSBattleDMGHandler());
+            _csProtoPacketHandler.AddHandler(new GuideBookAutoFirstOpenReqHandler());
 
 
             _tpduConsumer.AddHandler(new TdpuCmdRelay(Database));

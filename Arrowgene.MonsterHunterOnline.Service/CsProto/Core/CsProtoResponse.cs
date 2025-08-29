@@ -212,5 +212,23 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Core
         public static CsCsProtoStructurePacket<CSProjectileLaunchNtf> CSProjectileLaunchNtf =>
             new(CS_CMD_ID.CS_CMD_PROJECTILE_LAUNCH_NTF);
 
+        public static CsCsProtoStructurePacket<CSBattleDMG> CSBattleDMG =>
+            new(CS_CMD_ID.CS_CMD_BATTLE_DMG_VERIFY);
+
+        public static CsCsProtoStructurePacket<CSDMGResult> CSDMGResult =>
+            new(CS_CMD_ID.CS_CMD_BATTLE_DMGRESULT);
+
+        public static CsCsProtoStructurePacket<CSBattlePVPDMG> CSBattlePVPDMG =>
+            new(CS_CMD_ID.CS_CMD_BATTLE_PVP_DMG);
+
+        public static CsCsProtoStructurePacket<CSBattlePVPDMGNtf> CSBattlePVPDMGNtf =>
+            new(CS_CMD_ID.CS_CMD_BATTLE_PVP_DMG_NTF);
+
+        public static CsCsProtoStructurePacket<CSGuideBookAutoFirstOpenReq> CSGuideBookAutoFirstOpenReq =>
+            new(CS_CMD_ID.C2S_CMD_GUIDE_BOOK_AUTO_FIRST_OPEN_REQ);
+
+        public static CsCsProtoStructurePacket<SCGuideBookAutoFirstOpenRsp> SCGuideBookAutoFirstOpenRsp =>
+            new(CS_CMD_ID.S2C_CMD_GUIDE_BOOK_AUTO_FIRST_OPEN_RSP);
+
     }
 }

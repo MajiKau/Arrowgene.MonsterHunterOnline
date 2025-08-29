@@ -38,6 +38,12 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
     {
         private static readonly ILogger Logger = LogProvider.Logger(typeof(CSBBVar));
 
+        public CSBBVar(string name, CSBBVariable _Value)
+        {
+            Name = name;
+            Value = _Value;
+        }
+
         public CSBBVar(CSBBVariable _Value)
         {
             Name = "";

@@ -13,7 +13,7 @@ namespace Arrowgene.MonsterHunterOnline.Service.System.ChatSystem.Command.Comman
 
         public override void Execute(string[] command, Client client, ChatMessage message, List<ChatMessage> responses)
         {
-            string msg = $"X:{client.State.Position.x} Y:{client.State.Position.y} Z:{client.State.Position.z}";
+            string msg = $"X:{client.State.Position.x} Y:{client.State.Position.y} Z:{client.State.Position.z} Level:{client.State.levelId}";
             ChatMessage response = ChatMessage.CommandMessage(client, msg);
             responses.Add(response);
         }
