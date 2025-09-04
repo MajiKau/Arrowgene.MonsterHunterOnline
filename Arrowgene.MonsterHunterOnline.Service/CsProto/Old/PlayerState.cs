@@ -51,5 +51,7 @@ public class PlayerState
     public PlayerState(Client client)
     {
         _client = client;
+        if (this.Position == null)
+            Position = InitSpawnPos;
     }
 }

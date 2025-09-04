@@ -10,6 +10,29 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Handler;
 
 
 
+public class CSBBBool : CSBBVariable
+{
+    private static readonly ILogger Logger = LogProvider.Logger(typeof(CSBBBool));
+    public CSBBBool(bool value)
+    {
+        this.value = value;
+    }
+
+    public CS_BBVALUE_TYPE Type => CS_BBVALUE_TYPE.CS_BBVALUE_TYPE_BOOL;
+
+    public bool value;
+
+    public void WriteCs(IBuffer buffer)
+    {
+        buffer.WriteBool(value);
+    }
+
+    public void ReadCs(IBuffer buffer)
+    {
+        value = buffer.ReadBool();
+    }
+}
+
 public class CSBBInt : CSBBVariable
 {
     private static readonly ILogger Logger = LogProvider.Logger(typeof(CSBBInt));

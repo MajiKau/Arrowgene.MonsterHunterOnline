@@ -41,6 +41,11 @@ namespace Arrowgene.MonsterHunterOnline.Service.CsProto.Structures
             q = new CSQuat(qw, qx, qy, qz);
             t = new CSVec3(x,y,z);
         }
+        public CSQuatT(CSVec3 pos, CSQuat rot)
+        {
+            q = rot;
+            t = pos;
+        }
 
         public CSQuatT()
         {
